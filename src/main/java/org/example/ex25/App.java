@@ -19,19 +19,22 @@ public class App {
                 return 2;
             }
         }
-        String regex2 = "^(?=.*?[a-zA-Z])(?=.*?[0-9]).{8,}$";;
         String regex1 = "^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
-        Pattern p2 = Pattern.compile(regex2);
+        String regex2 = "^(?=.*?[a-zA-Z])(?=.*?[0-9]).{8,}$";
+
         Pattern p = Pattern.compile(regex1);
-        Matcher m2 = p2.matcher(input);
         Matcher m = p.matcher(input);
-        if (m2.find())
-        {
-            return 3;
-        }
+
+        Pattern p2 = Pattern.compile(regex2);
+        Matcher m2 = p2.matcher(input);
+
         if (m.find())
         {
             return 4;
+        }
+        if (m2.find())
+        {
+            return 3;
         }
         return 0;
     }
